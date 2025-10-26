@@ -11,7 +11,7 @@ for file in "$PROGRAM_DIR"/*.bas; do
     name="$(basename "${file%.bas}")"
     clean_name="${name//_/ }"
     prg="$PROGRAM_DIR/${name}.prg"
-    petcat -o "$prg" < "$file"
+    petcat -w2 -o "$prg" < "$file"
     c1541 -attach "$DISK" -write "$prg" "$clean_name"
 done
 
